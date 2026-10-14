@@ -1,0 +1,452 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kleiton Kitani</title>
+<meta name="description" content="Portfolio de Kleiton Kitani, étudiant en 3e année de BUT Réseaux et Télécommunications, parcours Cybersécurité, en recherche de stage du 22 mars au 27 juin 2027.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f7f4; --surface:#ffffff; --ink:#14181f; --muted:#5b6472; --line:#dde1e6;
+  --accent:#0f7b6c; --accent-soft:#e2f2ef; --grid:rgba(20,24,31,.045);
+  --fr:#2f5bd3; --de:#d4a017; --ch:#d0342c;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0e1116; --surface:#161b22; --ink:#e6e9ee; --muted:#9aa4b2; --line:#262d37;
+    --accent:#3fc7b0; --accent-soft:#12302b; --grid:rgba(230,233,238,.04);
+    --fr:#6b8ff0; --de:#e8bd45; --ch:#ef6159;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0e1116; --surface:#161b22; --ink:#e6e9ee; --muted:#9aa4b2; --line:#262d37;
+  --accent:#3fc7b0; --accent-soft:#12302b; --grid:rgba(230,233,238,.04);
+  --fr:#6b8ff0; --de:#e8bd45; --ch:#ef6159;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{
+  background:var(--bg); color:var(--ink);
+  font-family:"IBM Plex Sans",system-ui,sans-serif; line-height:1.6;
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:32px 32px;
+}
+a{color:inherit}
+.mono{font-family:"IBM Plex Mono",ui-monospace,monospace}
+.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+@media(min-width:720px){.wrap{padding:0 32px}}
+
+/* Nav */
+nav{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+.logo{font-family:"IBM Plex Mono",monospace;font-weight:500;text-decoration:none;font-size:.95rem}
+.logo span{color:var(--accent)}
+.links{display:flex;gap:2px;align-items:center}
+.links a{text-decoration:none;font-size:.88rem;color:var(--muted);padding:6px 9px;border-radius:6px}
+.links a:hover{color:var(--ink);background:var(--surface)}
+.links .hide-sm{display:none}
+@media(min-width:860px){.links .hide-sm{display:inline-block}}
+#theme{background:none;border:1px solid var(--line);color:var(--ink);border-radius:6px;width:34px;height:34px;cursor:pointer;margin-left:6px;font-size:1rem}
+
+/* Hero */
+.hero{padding:64px 0 48px}
+.prompt{font-family:"IBM Plex Mono",monospace;color:var(--accent);font-size:.9rem;margin-bottom:18px}
+.prompt::after{content:"▋";margin-left:4px;animation:blink 1.1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+h1{font-size:clamp(2.4rem,7vw,4.2rem);line-height:1.05;letter-spacing:-.03em;font-weight:700}
+.role{font-size:clamp(1.1rem,2.6vw,1.4rem);color:var(--muted);margin-top:14px;max-width:680px}
+.role strong{color:var(--ink);font-weight:600}
+.search{margin-top:26px;display:flex;flex-wrap:wrap;align-items:center;gap:14px 20px;background:var(--surface);border:1px solid var(--accent);border-radius:12px;padding:16px 18px;max-width:680px}
+.search .pulse{width:10px;height:10px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 0 var(--accent);animation:pulse 2s infinite;flex:none}
+@keyframes pulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--accent) 60%,transparent)}70%{box-shadow:0 0 0 10px transparent}100%{box-shadow:0 0 0 0 transparent}}
+.search-txt{flex:1;min-width:200px}
+.search-txt b{display:block;font-size:1.05rem}
+.search-txt span{font-family:"IBM Plex Mono",monospace;font-size:.85rem;color:var(--muted)}
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.btn{text-decoration:none;font-weight:500;font-size:.95rem;padding:11px 18px;border-radius:8px;border:1px solid var(--ink);display:inline-block}
+.btn.primary{background:var(--ink);color:var(--bg)}
+.btn.primary:hover{background:var(--accent);border-color:var(--accent)}
+.btn.ghost:hover{background:var(--surface)}
+
+/* Intro cards (ce que je fais / recherche) */
+.intro{display:grid;gap:14px;margin-top:40px}
+@media(min-width:820px){.intro{grid-template-columns:1fr 1fr}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:22px}
+.card .label{margin-bottom:8px;display:block}
+.card h3{font-size:1.15rem;margin-bottom:10px;line-height:1.3}
+.card p{color:var(--muted);font-size:.95rem;margin-bottom:10px}
+.card p:last-child{margin-bottom:0}
+.card p strong{color:var(--ink);font-weight:600}
+.facts{list-style:none;display:grid;gap:8px;margin-top:4px}
+.facts li{display:grid;grid-template-columns:110px 1fr;gap:10px;font-size:.92rem;padding-bottom:8px;border-bottom:1px dashed var(--line)}
+.facts li:last-child{border-bottom:none;padding-bottom:0}
+.facts li span:first-child{font-family:"IBM Plex Mono",monospace;font-size:.8rem;color:var(--muted);padding-top:2px}
+
+/* Sections */
+section{padding:56px 0;border-top:1px solid var(--line)}
+.label{font-family:"IBM Plex Mono",monospace;font-size:.8rem;color:var(--accent);text-transform:uppercase;letter-spacing:.08em}
+h2{font-size:clamp(1.6rem,4vw,2.2rem);letter-spacing:-.02em;margin:6px 0 28px;line-height:1.2}
+.lead{color:var(--muted);max-width:680px;margin:-12px 0 28px}
+
+/* Expertise */
+.expertise{display:grid;gap:14px}
+@media(min-width:820px){.expertise{grid-template-columns:repeat(3,1fr)}}
+.exp{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:22px;position:relative;overflow:hidden}
+.exp.main{border-color:var(--accent)}
+.exp .ico{font-family:"IBM Plex Mono",monospace;font-size:.8rem;color:var(--accent);border:1px solid var(--line);border-radius:6px;padding:3px 8px;display:inline-block;margin-bottom:12px}
+.exp.main .ico{background:var(--accent-soft);border-color:transparent}
+.exp h3{font-size:1.1rem;margin-bottom:6px}
+.exp p{color:var(--muted);font-size:.93rem}
+
+/* Projects */
+.projects{display:grid;gap:14px}
+@media(min-width:820px){.projects{grid-template-columns:repeat(3,1fr)}}
+.proj{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:20px;text-decoration:none;transition:border-color .2s,transform .2s}
+.proj:hover{border-color:var(--accent);transform:translateY(-2px)}
+.proj .num{font-family:"IBM Plex Mono",monospace;font-size:.8rem;color:var(--accent)}
+.proj h3{font-size:1.05rem;margin:6px 0 8px;line-height:1.3}
+.proj p{font-size:.9rem;color:var(--muted);flex:1}
+.proj .chips{margin-top:14px}
+.sub-h{font-size:1.1rem;margin:44px 0 16px}
+.skills{display:grid;gap:14px}
+@media(min-width:720px){.skills{grid-template-columns:1fr 1fr}}
+.skill{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px}
+.skill h3{font-size:.95rem;margin-bottom:10px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-family:"IBM Plex Mono",monospace;font-size:.78rem;padding:4px 9px;border-radius:5px;background:var(--bg);border:1px solid var(--line)}
+.soft{display:flex;flex-wrap:wrap;gap:8px}
+.soft span{font-size:.9rem;padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:var(--surface)}
+
+/* Experiences */
+.xp{display:grid;gap:14px}
+.xp-item{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:20px;display:grid;gap:6px}
+@media(min-width:720px){.xp-item{grid-template-columns:180px 1fr;gap:20px}}
+.xp-item .when{padding-top:2px}
+.xp-item h3{font-size:1.05rem;line-height:1.3}
+.xp-item p{color:var(--muted);font-size:.93rem;margin-top:4px}
+.xp-item.wanted{border-style:dashed;border-color:var(--accent);background:transparent}
+.xp-item.wanted h3{color:var(--accent)}
+
+/* Route */
+.route{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:22px 18px;margin-bottom:28px;overflow:hidden}
+.route-head{display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;font-family:"IBM Plex Mono",monospace;font-size:.8rem;color:var(--muted);margin-bottom:14px}
+.route svg{width:100%;height:auto;display:block}
+.route text{font-family:"IBM Plex Sans",sans-serif;fill:var(--ink)}
+.route .sub{fill:var(--muted);font-family:"IBM Plex Mono",monospace}
+
+/* Timeline */
+.timeline{display:grid;gap:16px}
+.step{display:grid;gap:4px;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--c);border-radius:10px;padding:18px 18px 18px 20px}
+.step.current{box-shadow:0 0 0 1px var(--accent) inset;border-left-color:var(--accent)}
+.step-top{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:6px 14px}
+.step h3{font-size:1.1rem;line-height:1.3}
+.when{font-family:"IBM Plex Mono",monospace;font-size:.85rem;color:var(--muted)}
+.school{font-weight:500}
+.where{color:var(--muted);font-size:.92rem}
+.step ul{list-style:none;margin-top:8px;display:grid;gap:4px}
+.step li{font-size:.92rem;color:var(--muted);padding-left:16px;position:relative}
+.step li::before{content:"›";position:absolute;left:0;color:var(--c)}
+.now{font-family:"IBM Plex Mono",monospace;font-size:.72rem;background:var(--accent-soft);color:var(--accent);padding:2px 8px;border-radius:4px;margin-left:8px;vertical-align:middle}
+
+/* Contact */
+.contact-box{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:26px;display:grid;gap:24px}
+@media(min-width:820px){.contact-box{grid-template-columns:1.2fr 1fr;align-items:start}}
+.contact-box p{color:var(--muted)}
+.contact{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.langs{display:grid;gap:10px;grid-template-columns:1fr 1fr}
+.lang{border:1px solid var(--line);border-radius:10px;padding:12px}
+.lang b{display:block;font-size:.95rem}
+.lang span{font-size:.82rem;color:var(--muted)}
+footer{border-top:1px solid var(--line);padding:24px 0 40px;color:var(--muted);font-size:.85rem}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="#" class="logo">~/kleiton<span>.kitani</span></a>
+    <div class="links">
+      <a href="#expertise" class="hide-sm">Expertise</a>
+      <a href="#projets" class="hide-sm">Projets</a>
+      <a href="#experiences" class="hide-sm">Expériences</a>
+      <a href="#formations">Formations</a>
+      <a href="#contact">Contact</a>
+      <button id="theme" aria-label="Changer de thème">◐</button>
+    </div>
+  </div>
+</nav>
+
+<!-- 1. PRÉSENTATION -->
+<header class="hero" id="presentation">
+  <div class="wrap">
+    <p class="prompt">$ whoami</p>
+    <h1>Kleiton Kitani</h1>
+    <p class="role">Étudiant en <strong>3ᵉ année de BUT Réseaux &amp; Télécommunications</strong>, parcours <strong>Cybersécurité</strong>.</p>
+
+    <div class="search">
+      <span class="pulse" aria-hidden="true"></span>
+      <div class="search-txt">
+        <b>En recherche de stage</b>
+        <span>du 22 mars au 27 juin 2027 · 14 semaines</span>
+      </div>
+      <a href="#contact" class="btn primary">Me contacter</a>
+    </div>
+
+    <div class="intro">
+      <article class="card">
+        <span class="label">Ce que je fais</span>
+        <h3>Concevoir, sécuriser et superviser des infrastructures</h3>
+        <p>Je construis des <strong>réseaux chiffrés</strong>, je durcis des <strong>services exposés</strong> (DNS, messagerie) et j'automatise le déploiement et la <strong>supervision</strong> d'infrastructures cloud.</p>
+        <p>Mon parcours entre la France, l'Allemagne et la Suisse m'a appris à m'adapter vite à de nouveaux environnements, de nouvelles équipes et de nouvelles langues.</p>
+      </article>
+      <article class="card">
+        <span class="label">Ce que je recherche</span>
+        <h3>Un stage en cybersécurité ou en infrastructure</h3>
+        <ul class="facts">
+          <li><span>Période</span><span>22 mars → 27 juin 2027</span></li>
+          <li><span>Durée</span><span>14 semaines</span></li>
+          <li><span>Domaines</span><span>Sécurité réseau, administration systèmes et réseaux</span></li>
+          <li><span>Langues</span><span>Français, anglais, allemand</span></li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</header>
+
+<!-- 2. DOMAINES D'EXPERTISE -->
+<section id="expertise">
+  <div class="wrap">
+    <p class="label">01 · Domaines d'expertise</p>
+    <h2>Là où j'interviens</h2>
+    <div class="expertise">
+      <article class="exp main">
+        <span class="ico">[ cyber ]</span>
+        <h3>Cybersécurité</h3>
+        <p>Threat modeling, segmentation par pare-feu, chiffrement des flux, authentification des emails (SPF, DKIM, DMARC), DNSSEC et filtrage anti-spam et antivirus.</p>
+      </article>
+      <article class="exp">
+        <span class="ico">[ réseau ]</span>
+        <h3>Réseaux &amp; télécoms</h3>
+        <p>Adressage et subnetting IP, routage dynamique OSPF, VPN WireGuard multi-sites, basculement automatique et services réseau (DNS, mail).</p>
+      </article>
+      <article class="exp">
+        <span class="ico">[ supervision ]</span>
+        <h3>Observabilité</h3>
+        <p>Collecte de métriques et de logs (Prometheus, Loki), tableaux de bord Grafana, définition de SLO/SLI et alerting.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 3. PROJETS / COMPÉTENCES -->
+<section id="projets">
+  <div class="wrap">
+    <p class="label">02 · Projets &amp; compétences</p>
+    <h2>Projets phares</h2>
+    <div class="projects">
+      <a class="proj" href="#">
+        <span class="num">01 / réseau · sécurité</span>
+        <h3>VPN mesh chiffré multi-cloud</h3>
+        <p>Réseau WireGuard entre quatre sites (AWS, Azure, OpenStack, on-prem), avec routage dynamique OSPF, basculement automatique, pare-feu segmenté, threat modeling et rotation des clés via Ansible.</p>
+        <div class="chips"><span class="chip">WireGuard</span><span class="chip">FRR</span><span class="chip">nftables</span></div>
+      </a>
+      <a class="proj" href="#">
+        <span class="num">02 / sécurité</span>
+        <h3>Serveurs DNS et mail sécurisés</h3>
+        <p>DNS autoritaire avec signature DNSSEC (ZSK/KSK) et serveur mail avec chaîne d'authentification complète (SPF, DKIM, DMARC) et filtrage anti-spam et antivirus.</p>
+        <div class="chips"><span class="chip">BIND9</span><span class="chip">Postfix</span><span class="chip">DNSSEC</span></div>
+      </a>
+      <a class="proj" href="#">
+        <span class="num">03 / devops</span>
+        <h3>Plateforme d'observabilité en IaC</h3>
+        <p>Monitoring multi-sites entièrement automatisé : k3s provisionné avec OpenTofu, configuré avec Ansible, déployé en GitOps avec ArgoCD, avec SLO/SLI et alertes vers Teams.</p>
+        <div class="chips"><span class="chip">k3s</span><span class="chip">ArgoCD</span><span class="chip">Grafana</span></div>
+      </a>
+    </div>
+
+    <h3 class="sub-h">Compétences techniques</h3>
+    <div class="skills">
+      <div class="skill"><h3>Réseau &amp; sécurité</h3><div class="chips"><span class="chip">WireGuard</span><span class="chip">FRR / OSPF</span><span class="chip">nftables</span><span class="chip">Subnetting IP</span><span class="chip">Threat modeling</span></div></div>
+      <div class="skill"><h3>DNS &amp; messagerie</h3><div class="chips"><span class="chip">BIND9</span><span class="chip">DNSSEC</span><span class="chip">Postfix</span><span class="chip">OpenDKIM</span><span class="chip">SPF / DKIM / DMARC</span><span class="chip">SpamAssassin</span><span class="chip">ClamAV</span></div></div>
+      <div class="skill"><h3>Cloud &amp; DevOps</h3><div class="chips"><span class="chip">AWS</span><span class="chip">Azure</span><span class="chip">OpenStack</span><span class="chip">Kubernetes (k3s)</span><span class="chip">Docker</span><span class="chip">ArgoCD</span><span class="chip">Helm</span><span class="chip">OpenTofu</span><span class="chip">Ansible</span></div></div>
+      <div class="skill"><h3>Monitoring &amp; logs</h3><div class="chips"><span class="chip">Prometheus</span><span class="chip">Grafana</span><span class="chip">Loki / Promtail</span><span class="chip">Alertmanager</span><span class="chip">SLO / SLI</span></div></div>
+      <div class="skill"><h3>Développement &amp; bases de données</h3><div class="chips"><span class="chip">Python (Django)</span><span class="chip">JavaScript</span><span class="chip">HTML / CSS</span><span class="chip">MySQL</span><span class="chip">MariaDB</span><span class="chip">SQL</span></div></div>
+      <div class="skill"><h3>Systèmes &amp; outils</h3><div class="chips"><span class="chip">Linux (Ubuntu)</span><span class="chip">Git</span><span class="chip">GitHub</span></div></div>
+    </div>
+
+    <h3 class="sub-h">Savoir-être</h3>
+    <div class="soft">
+      <span>Autonomie</span><span>Travail en équipe</span><span>Adaptabilité</span><span>Environnement multilingue</span>
+    </div>
+  </div>
+</section>
+
+<!-- 4. EXPÉRIENCES -->
+<section id="experiences">
+  <div class="wrap">
+    <p class="label">03 · Expériences</p>
+    <h2>Expériences</h2>
+    <div class="xp">
+      <article class="xp-item wanted">
+        <span class="when">mars → juin 2027</span>
+        <div>
+          <h3>Votre entreprise ?</h3>
+          <p>Je recherche un stage de 14 semaines en cybersécurité, en réseau ou en infrastructure cloud. Ce créneau est à vous.</p>
+        </div>
+      </article>
+      <article class="xp-item">
+        <span class="when">2024 → 2026</span>
+        <div>
+          <h3>Études supérieures en Allemagne et en Suisse</h3>
+          <p>Deux années d'informatique suivies en allemand, à la Hochschule Furtwangen puis à la FHNW. Projets techniques en équipe dans un environnement international.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 5. FORMATIONS -->
+<section id="formations">
+  <div class="wrap">
+    <p class="label">04 · Formations</p>
+    <h2>Un parcours trinational</h2>
+
+    <div class="route" aria-hidden="true">
+      <div class="route-head"><span>Mon parcours</span><span>2023 → 2027</span></div>
+      <svg viewBox="0 0 800 140">
+        <path d="M60 80 C 170 30, 230 120, 320 80 S 470 20, 560 50 S 690 110, 740 80" fill="none" stroke="var(--line)" stroke-width="3"/>
+        <path d="M60 80 C 170 30, 230 120, 320 80 S 470 20, 560 50 S 690 110, 740 80" fill="none" stroke="var(--accent)" stroke-width="3" stroke-dasharray="6 8"/>
+        <circle cx="60" cy="80" r="11" fill="var(--surface)" stroke="var(--fr)" stroke-width="4"/>
+        <circle cx="250" cy="90" r="11" fill="var(--surface)" stroke="var(--fr)" stroke-width="4"/>
+        <circle cx="430" cy="48" r="11" fill="var(--surface)" stroke="var(--de)" stroke-width="4"/>
+        <circle cx="600" cy="60" r="11" fill="var(--surface)" stroke="var(--ch)" stroke-width="4"/>
+        <circle cx="740" cy="80" r="13" fill="var(--accent)" stroke="var(--surface)" stroke-width="4"/>
+        <text x="60" y="118" text-anchor="middle" font-size="14" font-weight="600">Mulhouse</text>
+        <text x="60" y="134" text-anchor="middle" font-size="11" class="sub">FR · 2023</text>
+        <text x="250" y="124" text-anchor="middle" font-size="14" font-weight="600">Colmar</text>
+        <text x="250" y="138" text-anchor="middle" font-size="11" class="sub">FR · 2023–24</text>
+        <text x="430" y="22" text-anchor="middle" font-size="14" font-weight="600">Furtwangen</text>
+        <text x="430" y="80" text-anchor="middle" font-size="11" class="sub">DE · 2024–25</text>
+        <text x="600" y="34" text-anchor="middle" font-size="14" font-weight="600">Windisch</text>
+        <text x="600" y="92" text-anchor="middle" font-size="11" class="sub">CH · 2025–26</text>
+        <text x="740" y="118" text-anchor="middle" font-size="14" font-weight="600">Colmar</text>
+        <text x="740" y="134" text-anchor="middle" font-size="11" class="sub">FR · 2026–27</text>
+      </svg>
+    </div>
+
+    <div class="timeline">
+      <article class="step current" style="--c:var(--fr)">
+        <div class="step-top">
+          <h3>BUT Réseaux &amp; Télécommunications, 3ᵉ année · parcours Cybersécurité <span class="now">EN COURS</span></h3>
+          <span class="when">2026 – 2027</span>
+        </div>
+        <div class="school">IUT de Colmar</div>
+        <div class="where">Colmar, France 🇫🇷</div>
+        <ul>
+          <li>Spécialisation en cybersécurité des réseaux et des systèmes</li>
+          <li>Stage de fin d'études du 22 mars au 27 juin 2027</li>
+        </ul>
+      </article>
+
+      <article class="step" style="--c:var(--ch)">
+        <div class="step-top">
+          <h3>Année d'études en informatique (cursus Bachelor)</h3>
+          <span class="when">2025 – 2026</span>
+        </div>
+        <div class="school">FHNW · Fachhochschule Nordwestschweiz</div>
+        <div class="where">Windisch, Suisse 🇨🇭</div>
+        <ul>
+          <li>Réseaux, cloud, DevOps et sécurité, enseignés en allemand</li>
+          <li>Projets : VPN mesh multi-cloud, serveurs DNS et mail sécurisés, plateforme d'observabilité</li>
+        </ul>
+      </article>
+
+      <article class="step" style="--c:var(--de)">
+        <div class="step-top">
+          <h3>Année d'études en informatique (cursus Bachelor)</h3>
+          <span class="when">2024 – 2025</span>
+        </div>
+        <div class="school">Hochschule Furtwangen (HFU)</div>
+        <div class="where">Furtwangen, Allemagne 🇩🇪</div>
+        <ul>
+          <li>Année d'études suivie entièrement en allemand</li>
+        </ul>
+      </article>
+
+      <article class="step" style="--c:var(--fr)">
+        <div class="step-top">
+          <h3>BUT Réseaux &amp; Télécommunications, 1ʳᵉ année</h3>
+          <span class="when">2023 – 2024</span>
+        </div>
+        <div class="school">IUT de Colmar</div>
+        <div class="where">Colmar, France 🇫🇷</div>
+        <ul>
+          <li>Bases en réseaux, télécoms et systèmes</li>
+        </ul>
+      </article>
+
+      <article class="step" style="--c:var(--fr)">
+        <div class="step-top">
+          <h3>AbiBac · double diplôme franco-allemand</h3>
+          <span class="when">2023</span>
+        </div>
+        <div class="school">Lycée Sainte Jeanne d'Arc</div>
+        <div class="where">Mulhouse, France 🇫🇷</div>
+        <ul>
+          <li>Baccalauréat général, mention Bien</li>
+          <li>Abitur allemand (Land de Hesse)</li>
+          <li>Spécialités : mathématiques et NSI (informatique)</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 6. CONTACT -->
+<section id="contact">
+  <div class="wrap">
+    <p class="label">05 · Contact</p>
+    <h2>Un stage à proposer ?</h2>
+    <div class="contact-box">
+      <div>
+        <p>Je suis disponible pour un stage du <strong style="color:var(--ink)">22 mars au 27 juin 2027</strong>. N'hésitez pas à me contacter pour échanger sur vos besoins ou demander mon CV.</p>
+        <div class="contact">
+          <a class="btn primary" href="mailto:kleitonkitani@outlook.com">kleitonkitani@outlook.com</a>
+          <a class="btn ghost" href="#">GitHub</a>
+          <a class="btn ghost" href="#">LinkedIn</a>
+        </div>
+      </div>
+      <div class="langs">
+        <div class="lang"><b>Français</b><span>Langue maternelle</span></div>
+        <div class="lang"><b>Albanais</b><span>Langue maternelle</span></div>
+        <div class="lang"><b>Anglais</b><span>B2 – C1</span></div>
+        <div class="lang"><b>Allemand</b><span>B2</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span class="mono">hébergé sur GitHub Pages</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var root=document.documentElement, btn=document.getElementById('theme');
+  try{var s=localStorage.getItem('theme'); if(s) root.setAttribute('data-theme',s);}catch(e){}
+  btn.addEventListener('click',function(){
+    var cur=root.getAttribute('data-theme') || (matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+    var next=cur==='dark'?'light':'dark';
+    root.setAttribute('data-theme',next);
+    try{localStorage.setItem('theme',next);}catch(e){}
+  });
+})();
+</script>
+</body>
+</html>
